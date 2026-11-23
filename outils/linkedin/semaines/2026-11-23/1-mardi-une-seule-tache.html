@@ -1,0 +1,63 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="../../base.css">
+<style>
+ .batt{position:relative;display:flex;gap:40px;margin-top:70px;align-items:flex-end}
+ .pile{flex:1}
+ .pile .h{font:600 30px Inter;color:#AEB6C0;margin-bottom:18px}
+ .corps{position:relative;height:120px;border:4px solid #3A414B;border-radius:22px;padding:10px}
+ .corps:after{content:"";position:absolute;right:-22px;top:36px;width:14px;height:40px;border-radius:0 6px 6px 0;background:#3A414B}
+ .niv{height:100%;border-radius:12px}
+ .tache{margin-top:28px}
+ .avant{display:flex;align-items:center;gap:20px;margin:56px 0 30px;font-size:34px;color:#AEB6C0}
+ .avant s{color:#7E8894}
+ .tk h2{font-size:80px;margin-top:60px}
+ .tk .avant{margin:90px 0 60px}
+ .tk .postit{font-size:40px;padding:28px 34px}
+ .tk .ligne{font-size:40px;padding:30px 0}
+ .tk .carte{padding:40px 44px}
+</style></head><body>
+<section class="slide">
+  <p class="sur">Cas fictif · agence immobilière</p>
+  <h1>Pas besoin de tout changer. <span class="o">Commencez par une seule tâche.</span></h1>
+  <div class="batt">
+    <div class="pile"><div class="h">Claire · 9 h</div><div class="corps"><div class="niv" style="width:96%;background:var(--orange)"></div></div></div>
+    <div class="pile"><div class="h">Claire · 19 h</div><div class="corps"><div class="niv" style="width:14%;background:#E5484D"></div></div></div>
+  </div>
+  <p class="txt" style="margin-top:60px">4 personnes. Le matin, l'énergie pour développer l'agence. Le soir, tout est parti dans <b style="color:#fff">le répétitif</b>.</p>
+  <p class="txt" style="color:var(--orange)">5 tâches à confier à un outil →</p>
+  <div class="pied"><img src="../../../../media/seeclick-logo-horizontal-negatif.svg" alt=""><div class="cta">Diagnostic IA <span class="o" style="display:inline;color:var(--orange);font-weight:600">sans engagement</span><span>seeclick.fr</span></div></div>
+</section>
+<template id="t"><section class="slide tk">
+  <div class="compteur"></div>
+  <p class="sur"></p>
+  <h2></h2>
+  <div class="avant"><span class="postit"></span></div>
+  <div class="carte"><div class="ligne"><span class="ok"></span><span class="a1"></span></div><div class="ligne"><span class="ok"></span><span class="a2"></span></div><div class="ligne"><span class="ok"></span><span>Claire relit et décide.</span></div></div>
+  <div class="pied"><img src="../../../../media/seeclick-logo-horizontal-negatif.svg" alt=""><div class="cta">Cas fictif<span>seeclick.fr</span></div></div>
+</section></template>
+<section class="slide" id="fin">
+  <p class="sur">Et vous ?</p>
+  <h1>Laquelle confieriez-vous <span class="o">en premier&nbsp;?</span></h1>
+  <div class="carte neutre" style="margin-top:70px">
+    <div class="ligne"><span class="ok"></span>À chaque fois, l'outil prépare.</div>
+    <div class="ligne"><span class="ok"></span>Vous relisez, vous décidez.</div>
+    <div class="ligne"><span class="ok"></span>On commence par une seule tâche.</div>
+  </div>
+  <p class="txt" style="margin-top:50px">Dites-le en commentaire.</p>
+  <div class="pied"><img src="../../../../media/seeclick-logo-horizontal-negatif.svg" alt=""><div class="cta">Diagnostic IA <span style="display:inline;color:var(--orange);font-weight:600">sans engagement</span><span>seeclick.fr</span></div></div>
+</section>
+<script>
+const T=[
+ ["Les annonces","Le premier jet des annonces","Photos et notes de visite… et la page blanche.","Un premier jet d'annonce à partir de vos notes","Les points forts du bien mis en avant"],
+ ["Les questions","Les réponses aux questions sur les biens","« Le parking est compris ? » × 30 par semaine","Une réponse prête, tirée de la fiche du bien","Les demandes triées par bien"],
+ ["Les visites","Les comptes rendus de visite","Les notes griffonnées dans la voiture","Un compte rendu propre pour le propriétaire","Les remarques des visiteurs regroupées"],
+ ["Les dossiers","La vérification des dossiers locataires","« Il manque quelle pièce déjà ? »","La liste des pièces reçues et manquantes","Un message prêt pour demander le reste"],
+ ["Les relances","La liste des propriétaires à relancer","Un tableau à jour… une fois par mois","Chaque lundi, qui relancer et pourquoi","Le message de relance préparé"]];
+const fin=document.getElementById('fin'),t=document.getElementById('t');
+T.forEach((r,i)=>{const s=t.content.firstElementChild.cloneNode(true);
+ s.querySelector('.compteur').textContent=(i+1)+' / 5';s.querySelector('.sur').textContent='Tâche '+(i+1)+' · '+r[0];
+ s.querySelector('h2').innerHTML=r[1];s.querySelector('.postit').textContent=r[2];
+ s.querySelector('.a1').textContent=r[3];s.querySelector('.a2').textContent=r[4];
+ s.querySelector('.postit').style.transform='rotate('+(i%2?2:-2)+'deg)';
+ fin.before(s)});
+</script>
+</body></html>
